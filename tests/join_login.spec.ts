@@ -14,7 +14,7 @@ test.afterAll('Close the browser', async ({ page }) => {
   await page.close();
 });
 
-test.describe("The signup/login dialog", () => {
+test.describe("The signup/login dialog", () => {  // TODO:Add forgot password link
   test.afterEach('Close dialog', async ({ page }) => {
     const main_header = new MainHeader(page);
     const join_login_dialog = new JoinLoginDialog(page);

@@ -2,8 +2,11 @@ import { test, expect } from '@playwright/test';
 
 
 test.describe('API tests for reqres.in', () => {
+
+    const base_url = 'https://reqres.in/api'
+    
     test('API GET request', async({ request }) => {
-        const res_raw = await request.get('https://reqres.in/api/users/2');
+        const res_raw = await request.get(`${base_url}/users/2`);
         expect(res_raw.status()).toBe(200);
         // Assert json contents
         const res_json = await res_raw.json()
@@ -17,7 +20,7 @@ test.describe('API tests for reqres.in', () => {
             "name": "morpheus",
             "job": "leader"
         }
-        const res_raw = await request.post('https://reqres.in/api/users', {data: req_body});
+        const res_raw = await request.post(`${base_url}/users`, {data: req_body});
         expect(res_raw.status()).toBe(201);
         // Assert json content
         const res_json = await res_raw.json();
@@ -30,7 +33,7 @@ test.describe('API tests for reqres.in', () => {
             "name": "morpheus",
             "job": "zion resident"
         }
-        const res_raw = await request.put('https://reqres.in/api/users/2', {data: req_body});
+        const res_raw = await request.put(`${base_url}/users/2`, {data: req_body});
         expect(res_raw.status()).toBe(200);
         // Assert json content
         const res_json = await res_raw.json();
@@ -40,7 +43,7 @@ test.describe('API tests for reqres.in', () => {
     });
 
     test('API DELETE request', async({ request }) => {
-        const res_raw = await request.delete('https://reqres.in/api/users/2');
+        const res_raw = await request.delete(`${base_url}/users/2`);
         expect(res_raw.status()).toBe(204);
     })
 });

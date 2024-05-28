@@ -58,6 +58,7 @@ export class HomePage extends BasePage {
         this.yourHomeTitle = page.locator('[data-hc-name="your-home-dash-modal-header"]');
         this.yourHomeDescription = page.locator('[data-hc-name="your-home-dash-modal-description"]');
         this.seeMyHomeButton = page.locator('[data-hc-name="your-home-dash-modal-button"]');
+        // Find agent section
         this.findAgentTitle = page.locator('.HomeSubpageYourTeamAgent__CardHeader');
         this.findAgentDescription = page.locator('.HomeSubpageYourTeamAgent__CardDescription');
         this.findAgentButton = page.locator('[data-hc-name="find-an-agent-cta"]');

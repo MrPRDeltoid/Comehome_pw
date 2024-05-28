@@ -14,6 +14,7 @@ test.afterAll('Close the browser', async ({ page }) => {
 });
 
 test.describe('The Main Header', () => {
+  
   test('Has correct elements', async ({ page }) => {
     const main_header = new MainHeader(page);
     await expect(main_header.logo).toHaveScreenshot('main_header_logo.png');
