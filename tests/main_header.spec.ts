@@ -17,6 +17,7 @@ test.describe('The Main Header', () => {
   
   test('Has correct elements', async ({ page }) => {
     const main_header = new MainHeader(page);
+    
     await expect(main_header.logo).toHaveScreenshot('main_header_logo.png');
     await expect(main_header.buyHomeButton).toHaveText("Find a home");
     await expect(main_header.myHomeButton).toHaveText("My home");
@@ -31,6 +32,7 @@ test.describe('The Main Header Options', () => {
   test('Can click Find a home to show correct page', async ({ page }) => {
     const main_header = new MainHeader(page);
     const find_home_page = new FindHomePage(page);
+
     await main_header.buyHomeButton.click();
     await expect(page).toHaveTitle('Real estate and homes for sale | ComeHome')
     await expect(find_home_page.mainHeader).toHaveScreenshot('find_home+page_mainHeader.png');

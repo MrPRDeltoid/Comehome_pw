@@ -1,10 +1,10 @@
 {
     "property1": {
-        "street_address": "199 El Nido Ave",
+        "street": "199 El Nido Ave",
         "city": "Pasadena",
         "state": "CA",
         "zip": "91107",
-        "property_type": "Single Family Detached",
+        "type": "Single Family Detached",
         "beds": 2,
         "baths": 2,
         "gla": "1,170",
@@ -12,11 +12,11 @@
         "year_built": "1924"
     },
     "property2": {
-        "street_address": "4126 Layman Ave",
+        "street": "4126 Layman Ave",
         "city": "Pico Rivera",
         "state": "CA",
         "zip": "90660",
-        "property_type": "Single Family Detached",
+        "type": "Single Family Detached",
         "beds": 3,
         "baths": 1,
         "gla": "1,262",

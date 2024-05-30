@@ -52,6 +52,8 @@ export class PublicView extends PropertyPage {
 export class OwnerView extends PropertyPage {
     // Elements and methods specific to owner view
     readonly avmSection: Locator;
+    readonly avmSectionAddress: Locator;
+    readonly avmSectionDetails: Locator;
     readonly brokerageSection: Locator;
     readonly yourHomeSection: Locator;
     readonly yourNeighborhoodSection: Locator;
@@ -60,6 +62,8 @@ export class OwnerView extends PropertyPage {
     constructor(page: Page) {
         super(page);
         this.avmSection = page.locator('[data-hc-name="avm-section"]');
+        this.avmSectionAddress = page.locator('[data-hc-name="avm-address"] > h1');
+        this.avmSectionDetails = page.locator('[data-hc-name="avm-property-details"]');
         this.brokerageSection = page.locator('class$="__BrokerageAttribution"]');
         this.yourHomeSection = page.locator('[data-hc-name="ho-dashboard-section-your_home"]');
         this.yourNeighborhoodSection = page.locator('[data-hc-name="ho-dashboard-section-your_neighborhood"]');
