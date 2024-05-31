@@ -4,10 +4,12 @@ import { expect, type Locator, type Page } from '@playwright/test';
 export class BasePage {
     // Common elements and methods across the app
     readonly mainHeader: Locator;
+    readonly joinLoginDialog: Locator;
     readonly footerSection: Locator;
 
     constructor(page: Page) {
         this.mainHeader = page.locator('[data-hc-name="top-section"]');
+        this.joinLoginDialog = page.locator('[class$="SlideInModal__ModalWithCloseIcon"]');
         this.footerSection = page.locator('[data-hc-name="footer-section"]');
     }
 }
@@ -21,7 +23,6 @@ export class MainHeader extends BasePage {
     readonly alertsButton: Locator;
     readonly findAnAgentButton: Locator;
     readonly joinLoginLink: Locator;
-    readonly joinLoginDialog: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -32,7 +33,6 @@ export class MainHeader extends BasePage {
         this.alertsButton = this.mainHeader.locator('[data-hc-name="alerts-button"]');
         this.findAnAgentButton = this.mainHeader.locator('[data-hc-name="find-an-agent-button"]');
         this.joinLoginLink = this.mainHeader.getByLabel('Join or log in')
-        this.joinLoginDialog = page.locator('[class$="SlideInModal__ModalWithCloseIcon"]');
     }
 
     // Methods

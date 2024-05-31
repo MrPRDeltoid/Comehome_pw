@@ -37,6 +37,7 @@ test.describe("The signup/login dialog", () => {  // TODO:Add forgot password li
     await expect(join_login_dialog.passwordField).toBeVisible();
     await expect(join_login_dialog.confirmRow).toHaveText("Terms of Service AgreementBy registering, I agree to ComeHome\nTerms of Use\nand\nPrivacy Policy");
     await expect(join_login_dialog.signupButton).toHaveText("Sign Up");
+    await expect(join_login_dialog.signupButton).not.toBeEnabled;
   });
 
   test('Has correct contents and elements on login form', async ({ page }) => {
@@ -54,5 +55,6 @@ test.describe("The signup/login dialog", () => {  // TODO:Add forgot password li
     await expect(join_login_dialog.passwordField).toBeVisible();
     await expect(join_login_dialog.confirmRow).toBeHidden();
     await expect(join_login_dialog.loginButton).toHaveText("Log In");
+    await expect(join_login_dialog.loginButton).not.toBeEnabled;
   });
 });

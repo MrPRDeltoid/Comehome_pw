@@ -5,14 +5,15 @@ import { BasePage } from './basePage';
 export class PropertyPage extends BasePage {
     // Elements common to both public and owner views
     readonly page: Page;
+
     readonly breadcrumbsSection: Locator;
-    readonly breadcrumbs: Locator;
     readonly publicViewButton: Locator;
     readonly ownerViewButton: Locator;
 
     constructor(page: Page) {
         super(page);
         this.page = page;
+
         this.breadcrumbsSection = page.locator('[data-hc-name="breadcrumbs"]');
         this.publicViewButton = page.locator('[data-hc-name="public-view-button"]');
         this.ownerViewButton = page.locator('[data-hc-name="owner-view-button"]');

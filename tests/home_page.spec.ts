@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import playwrightConfig from '../playwright.config';
 import { HomePage } from '../pages/homePage';
 import { PublicView, OwnerView } from '../pages/propertyPage';
+import { SearchPage } from '../pages/searchPage';
 
 
 test.beforeEach('Load Home Page', async ({ page }) => {
@@ -28,9 +29,8 @@ test.describe('The Home Page', () => {
   });
 
   test('Has correct title and url', async ({ page }) => {
-    const home_page = new HomePage(page);
 
-    await expect(page).toHaveURL(`${playwrightConfig.use?.baseURL}`)
+    await expect(page).toHaveURL(`${playwrightConfig.use?.baseURL}`);
     await expect(page).toHaveTitle("Home | ComeHome");
   });
 });
@@ -53,7 +53,7 @@ test.describe('The Find Home search view', () => {
     const property_data = require('../data/properties.json')['property1'];
 
     await home_page.searchForProperty(property_data['street']);
-    await public_view.breadcrumbsSection.waitFor()
+    await public_view.breadcrumbsSection.waitFor();
     expect(page.url()).toContain("property-details");
     expect(await page.title()).toContain(property_data['street']);
     // Add assertions on property page
@@ -107,14 +107,35 @@ test.describe('The Track or Buy Home section', () => {
 
   test('Shows correct content', async ({ page }) => {
     const home_page = new HomePage(page);
+
     await expect(home_page.buyHomeTitle).toHaveText("Buying a home");
     await expect(home_page.buyHomeDescription).toHaveText("Search homes for sale and filter by price, neighborhood, school ratings, and more. Find the perfect home that fits your needs.");
     await expect(home_page.searchHomesButton).toHaveText("Search homes");
+    await expect(home_page.searchHomesButton).toBeEnabled;
     await expect(home_page.searchHomesButton).toHaveAttribute('href', '/search');
     await expect(home_page.yourHomeTitle).toHaveText("Your homeowner dashboard");
     await expect(home_page.yourHomeDescription).toHaveText("See your home's value, equity, and what a home renovation would do to your value. Claim your home and access these features and more.");
     await expect(home_page.seeMyHomeButton).toHaveText("See my home");
+    await expect(home_page.seeMyHomeButton).toBeEnabled;
     await expect(home_page.seeMyHomeButton).toHaveAttribute('href', '/homeowner');
+  });
+
+  test('Can click on Search homes button to load correct page', async ({ page }) => {
+    const home_page = new HomePage(page);
+    const search_page = new SearchPage(page);
+
+    home_page.searchHomesButton.click();
+    await search_page.cardSection.waitFor();
+    await expect(page).toHaveURL(`${playwrightConfig.use?.baseURL}search`);
+    await expect(page).toHaveTitle("Real estate and homes for sale | ComeHome");
+  });
+
+  test('Can click on See my home button to load correct page', async ({ page }) => {
+    const home_page = new HomePage(page);
+
+    home_page.seeMyHomeButton.click();
+    await expect(page).toHaveURL(`${playwrightConfig.use?.baseURL}homeowner`);
+    await expect(page).toHaveTitle("My Home | ComeHome");
   });
 });
 
@@ -122,9 +143,19 @@ test.describe('The Find an Agent section', () => {
 
   test('Shows correct content', async ({ page }) => {
     const home_page = new HomePage(page);
+
     await expect(home_page.findAgentTitle).toHaveText("Need help finding an agent? We'll connect you.");
     await expect(home_page.findAgentDescription).toHaveText("We can help pair you with the right agent for your real estate needs. Let our team help make locating the best agent easy and smooth.");
     await expect(home_page.findAgentButton).toHaveText("Learn More");
+    await expect(home_page.findAgentButton).toBeEnabled;
     await expect(home_page.findAgentButton).toHaveAttribute('href', '/concierge-team');
+  });
+
+  test('Can click on Learn more button to load correct page', async ({ page }) => {
+    const home_page = new HomePage(page);
+
+    home_page.findAgentButton.click();
+    await expect(page).toHaveURL(`${playwrightConfig.use?.baseURL}concierge-team`);
+    await expect(page).toHaveTitle("Home | ComeHome");  // TODO: BUG - The title is not updated, shows title from previous loaded page
   });
 });

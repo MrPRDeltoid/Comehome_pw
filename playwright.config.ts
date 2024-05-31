@@ -27,6 +27,9 @@ export default defineConfig({
     baseURL: 'https://www.comehome.com/',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    /* Provide geolocation permission to supress any popups */
+    geolocation: { longitude: -122.431297, latitude: 37.773972 },
+    permissions: ['geolocation'],
     /* Toggle to capture video of test runs */
     //video: 'on',
     /* Options to employ after launch */

@@ -2,7 +2,7 @@ import { expect, type Locator, type Page } from '@playwright/test';
 import { BasePage } from './basePage';
 
 
-export class FindHomePage extends BasePage {
+export class SearchPage extends BasePage {
     readonly page: Page;
     // Main sections
     readonly searchBar: Locator;
@@ -19,7 +19,7 @@ export class FindHomePage extends BasePage {
     }
 
     // Methods
-    async gotoFindHomePage() {
+    async gotoSearchPage() {
         await this.page.goto('/search');
     }
 }
