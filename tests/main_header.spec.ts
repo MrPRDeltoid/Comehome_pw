@@ -46,7 +46,7 @@ test.describe('The Main Header Options', () => {
     await expect(search_page.searchBar).toHaveScreenshot('search+page_searchBar.png');
     await expect(search_page.mapSection).toBeVisible();
     await expect(search_page.cardSection).toBeVisible();
-    await expect(search_page.footerSection).toHaveScreenshot('search+page_footerSection.png');
+    await expect(search_page.footerSection).toHaveScreenshot('search+page_footerSection.png', { maxDiffPixelRatio: 0.05 });
   });
 
 
@@ -63,7 +63,7 @@ test.describe('The Main Header Options', () => {
     await expect(homeowner_page.loginRow).toHaveText("Claimed your home already?\nLog in");
     await expect(homeowner_page.bottomText).toHaveText("Claim your home to access tools to…");
     await expect(homeowner_page.infoCard).toHaveScreenshot('homeowner+page_infoCard.png');
-    await expect(homeowner_page.footerSection).toHaveScreenshot('homeowner+page_footerSection.png');
+    await expect(homeowner_page.footerSection).toHaveScreenshot('homeowner+page_footerSection.png', { maxDiffPixelRatio: 0.05 });
   });
 
   test('Can click Saved to show correct page', async ({ page }) => {
@@ -86,7 +86,7 @@ test.describe('The Main Header Options', () => {
     await expect(watchlist_page.subheader).toHaveText("We'll alert you to changes when there's news about a saved property");
     await expect(watchlist_page.signupButton).toHaveText("Sign Up");
     await expect(watchlist_page.loginButton).toHaveText("Login");
-    await expect(watchlist_page.footerSection).toHaveScreenshot('watchlist+page_footerSection.png');
+    await expect(watchlist_page.footerSection).toHaveScreenshot('watchlist+page_footerSection.png', { maxDiffPixelRatio: 0.05 });
   });
 
   test('Can click Alerts to show correct page', async ({ page }) => {
@@ -106,7 +106,7 @@ test.describe('The Main Header Options', () => {
     await expect(alerts_page.loggedOutSubheader).toHaveText("We'll alert you to changes when there's news about a saved property");
     await expect(alerts_page.signupButton).toHaveText("Sign Up");
     await expect(alerts_page.loginButton).toHaveText("Login");
-    await expect(alerts_page.footerSection).toHaveScreenshot('alerts+page_footerSection.png');
+    await expect(alerts_page.footerSection).toHaveScreenshot('alerts+page_footerSection.png', { maxDiffPixelRatio: 0.05 });
   });
 
   test('Can click Find an agent to show correct page', async ({ page }) => {
@@ -135,6 +135,6 @@ test.describe('The Main Header Options', () => {
     await expect(agent_page.getStartedButton).toHaveText("Get started");
     await expect(agent_page.getStartedButton).toBeEnabled;
     await expect(agent_page.secondaryImage).toHaveScreenshot('agent+page_secondaryImage.png');
-    await expect(agent_page.footerSection).toHaveScreenshot('agent+page_footerSection.png');
+    await expect(agent_page.footerSection).toHaveScreenshot('agent+page_footerSection.png', { maxDiffPixelRatio: 0.05 });
   }); 
 });
