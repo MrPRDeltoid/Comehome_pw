@@ -47,9 +47,9 @@ export class HomePage extends BasePage {
         // Property search
         this.findHomeButton = page.locator('[data-hc-name="find-a-home"]');
         this.trackHomeButton = page.locator('[data-hc-name="track-my-home"]');
-        this.searchField = page.locator('[name^="comehome-address-search-"]')
+        this.searchField = page.locator('[name^="comehome-address-search-"]');
         this.searchButton = page.locator('button[class$="HomeSubpageSearch__SearchButton"]');
-        this.searchResultItem = page.locator('[data-hc-name="header-search-results-address-list-item"]')
+        this.searchResultItem = page.locator('[data-hc-name="header-search-results-address-list-item"]');
         // Photo section
         this.photoColumn = page.locator('class$="__PhotoColumn"]');
         this.photo = page.locator('[class$="__PhotoColumnPhoto"]');
